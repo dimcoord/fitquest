@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqp7dbes4th6d"]
+
+[ext_resource type="Shader" uid="uid://44fs3dkw2im1" path="res://shaders/background.gdshader" id="1_0f027"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2c62f"]
+shader = ExtResource("1_0f027")
+shader_parameter/bottom_color = Color(0.3, 0.7, 1, 1)
+shader_parameter/top_color = Color(0, 0, 0, 1)
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1279.0
+offset_bottom = 739.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_2c62f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
