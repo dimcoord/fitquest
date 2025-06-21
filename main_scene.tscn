@@ -1,25 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqp7dbes4th6d"]
+[gd_scene load_steps=6 format=3 uid="uid://dqp7dbes4th6d"]
 
 [ext_resource type="Shader" uid="uid://44fs3dkw2im1" path="res://shaders/background.gdshader" id="1_0f027"]
+[ext_resource type="Script" uid="uid://bagovr5hu3mpg" path="res://sky_color_by_time.gd" id="1_2c62f"]
+[ext_resource type="Script" uid="uid://bldnd8n1kem1b" path="res://main_scene.gd" id="1_gyfs4"]
+[ext_resource type="Script" uid="uid://b46iigdffbn8i" path="res://time.gd" id="4_d5x1h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2c62f"]
 shader = ExtResource("1_0f027")
 shader_parameter/bottom_color = Color(0.3, 0.7, 1, 1)
 shader_parameter/top_color = Color(0, 0, 0, 1)
+shader_parameter/star_density = 0.995
+shader_parameter/star_speed = 1.0
+shader_parameter/star_size = 0.02
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_gyfs4")
 
-[node name="Control" type="Control" parent="."]
+[node name="Background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1279.0
-offset_bottom = 739.0
+offset_right = 727.0
+offset_bottom = 1282.0
+script = ExtResource("1_2c62f")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 material = SubResource("ShaderMaterial_2c62f")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = 1859.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Time" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_d5x1h")
+
+[node name="TimeLabel" type="Label" parent="Time"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 151.5
+offset_top = 120.0
+offset_right = 535.5
+offset_bottom = 325.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 215.0
+offset_top = 1075.0
+offset_right = 515.0
+offset_bottom = 1275.0
