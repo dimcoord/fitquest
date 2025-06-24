@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0ia3363175x4"]
+[gd_scene load_steps=10 format=3 uid="uid://d0ia3363175x4"]
 
 [ext_resource type="Shader" uid="uid://44fs3dkw2im1" path="res://shaders/background.gdshader" id="1_0f027"]
 [ext_resource type="Script" uid="uid://bagovr5hu3mpg" path="res://scripts/sky_color_by_time.gd" id="1_2c62f"]
-[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_rt2n2"]
+[ext_resource type="Script" uid="uid://bldnd8n1kem1b" path="res://scripts/main_scene.gd" id="1_rt2n2"]
 [ext_resource type="Texture2D" uid="uid://du6yuc6lgtcqd" path="res://assets/dirt_patch.jpg" id="4_8mm7a"]
 [ext_resource type="Script" uid="uid://yyak3jv5f8px" path="res://scripts/ui.gd" id="5_8mm7a"]
+[ext_resource type="FontFile" uid="uid://c4r02uhal83bd" path="res://assets/fonts/PressStart2P-Regular.ttf" id="6_18nlu"]
 [ext_resource type="Texture2D" uid="uid://mkdwpc8ws7bc" path="res://assets/plus_button.png" id="6_hq1ik"]
+[ext_resource type="Texture2D" uid="uid://can0r4acpx3d" path="res://assets/ok_button.png" id="7_c16ls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2c62f"]
 shader = ExtResource("1_0f027")
@@ -57,10 +59,13 @@ script = ExtResource("5_8mm7a")
 
 [node name="TimeLabel" type="Label" parent="UI"]
 layout_mode = 1
-offset_left = 17.0
-offset_top = 10.0
-offset_right = 129.0
-offset_bottom = 70.0
+offset_left = 267.0
+offset_top = 124.0
+offset_right = 467.0
+offset_bottom = 184.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
 theme_override_font_sizes/font_size = 40
 text = "00:00"
 horizontal_alignment = 1
@@ -71,22 +76,28 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 149.0
-offset_top = 85.0
-offset_right = 533.0
-offset_bottom = 290.0
+offset_left = 141.0
+offset_top = 173.0
+offset_right = 541.0
+offset_bottom = 378.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 150
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 100
 text = "25.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MotivationLabel" type="Label" parent="UI"]
 layout_mode = 1
-offset_left = 245.0
-offset_top = 256.0
-offset_right = 451.0
-offset_bottom = 316.0
+offset_left = 146.0
+offset_top = 342.0
+offset_right = 586.0
+offset_bottom = 402.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("6_18nlu")
 theme_override_font_sizes/font_size = 40
 text = "Keep it up!"
 horizontal_alignment = 1
@@ -100,11 +111,536 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 263.0
-offset_top = 1005.0
+offset_top = 606.0
 offset_right = 429.0
-offset_bottom = 1171.0
+offset_bottom = 772.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(84, 84)
+texture_normal = ExtResource("6_hq1ik")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/TextureButton"]
+layout_mode = 0
+offset_left = -196.0
+offset_top = 194.0
+offset_right = 364.0
+offset_bottom = 229.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 35
+text = "Create Character"
+
+[node name="QuestsButton" type="Button" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 1098.0
+offset_right = 344.0
+offset_bottom = 1259.0
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 35
+text = "Quests"
+
+[node name="StatsButton" type="Button" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 379.0
+offset_top = 1098.0
+offset_right = 689.0
+offset_bottom = 1259.0
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 35
+text = "Stats"
+
+[node name="InitializeForm" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 88.0
+offset_right = 678.0
+offset_bottom = 1232.0
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[node name="Name" type="LineEdit" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 103.0
+offset_right = 281.0
+offset_bottom = 169.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Name"
+max_length = 25
+caret_blink = true
+
+[node name="Label" type="Label" parent="UI/InitializeForm/Name"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.5
+offset_top = -73.0
+offset_right = 144.5
+offset_bottom = -4.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Character Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Calories" type="SpinBox" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 271.0
+offset_right = 281.0
+offset_bottom = 337.0
+grow_horizontal = 2
+max_value = 1000.0
+suffix = "kcal"
+
+[node name="Label" type="Label" parent="UI/InitializeForm/Calories"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.5
+offset_top = -73.0
+offset_right = 144.5
+offset_bottom = -4.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Calories per Day"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Height" type="SpinBox" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.5
+offset_top = 446.0
+offset_right = -1.5
+offset_bottom = 512.0
+grow_horizontal = 2
+max_value = 300.0
+suffix = "cm"
+custom_arrow_step = 100.0
+
+[node name="Label" type="Label" parent="UI/InitializeForm/Height"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.5
+offset_top = -73.0
+offset_right = 120.5
+offset_bottom = -4.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Height"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weight" type="SpinBox" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 10.5
+offset_top = 446.0
+offset_right = 281.5
+offset_bottom = 512.0
+grow_horizontal = 2
+max_value = 300.0
+suffix = "kg"
+
+[node name="Label" type="Label" parent="UI/InitializeForm/Weight"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = -73.0
+offset_right = 116.5
+offset_bottom = -4.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Weight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Age" type="SpinBox" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.5
+offset_top = 618.0
+offset_right = -1.5
+offset_bottom = 684.0
+grow_horizontal = 2
+max_value = 300.0
+suffix = "years old"
+custom_arrow_step = 100.0
+
+[node name="Label" type="Label" parent="UI/InitializeForm/Age"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.5
+offset_top = -73.0
+offset_right = 120.5
+offset_bottom = -4.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Age"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sex" type="Label" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 12.5
+offset_top = 545.0
+offset_right = 262.5
+offset_bottom = 614.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Sex"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Male" type="TextureButton" parent="UI/InitializeForm/Sex"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 73.0
+offset_right = -33.0
+offset_bottom = 139.0
+grow_horizontal = 2
+
+[node name="Female" type="TextureButton" parent="UI/InitializeForm/Sex"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 19.0
+offset_top = 73.0
+offset_right = 84.0
+offset_bottom = 139.0
+grow_horizontal = 2
+
+[node name="TOS" type="CheckBox" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -287.5
+offset_top = 724.0
+offset_right = -107.5
+offset_bottom = 769.0
+grow_horizontal = 2
+scale = Vector2(2.19, 2.19)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "I agree to the EULA."
+expand_icon = true
+
+[node name="OKButton" type="TextureButton" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 67.5
+offset_top = -192.0
+offset_right = 218.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_c16ls")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CancelButton" type="TextureButton" parent="UI/InitializeForm"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.5
+offset_top = -195.0
+offset_right = -69.5
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.811578
+pivot_offset = Vector2(75, 78)
+texture_normal = ExtResource("6_hq1ik")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="QuestsForm" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 88.0
+offset_right = 678.0
+offset_bottom = 1232.0
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[node name="Label" type="Label" parent="UI/QuestsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 30.0
+offset_right = 198.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 50
+text = "Quests"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="TextureButton" parent="UI/QuestsForm"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -141.0
+offset_right = 35.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.811578
+pivot_offset = Vector2(75, 78)
+texture_normal = ExtResource("6_hq1ik")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StatsForm" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 88.0
+offset_right = 678.0
+offset_bottom = 1232.0
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[node name="Label" type="Label" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 30.0
+offset_right = 198.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 50
+text = "Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 420.0
+offset_right = 198.0
+offset_bottom = 489.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 50
+text = "name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Height" type="Label" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.5
+offset_top = 526.0
+offset_right = 66.5
+offset_bottom = 595.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "Height:"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="UI/StatsForm/Height"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 178.5
+offset_right = 407.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Weight" type="Label" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.5
+offset_top = 613.0
+offset_right = 66.5
+offset_bottom = 682.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "Weight:"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="UI/StatsForm/Weight"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 182.5
+offset_right = 407.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Age" type="Label" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.5
+offset_top = 697.0
+offset_right = 66.5
+offset_bottom = 766.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "Age:"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="UI/StatsForm/Age"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 186.5
+offset_right = 407.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CaloriesBurned" type="Label" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -298.5
+offset_top = 810.0
+offset_right = 299.5
+offset_bottom = 879.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "Calories burned"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="UI/StatsForm/CaloriesBurned"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 88.0
+offset_right = 92.0
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="TextureButton" parent="UI/StatsForm"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -141.0
+offset_right = 35.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.811578
+pivot_offset = Vector2(75, 78)
 texture_normal = ExtResource("6_hq1ik")
 ignore_texture_size = true
 stretch_mode = 0
@@ -115,3 +651,11 @@ offset_left = 215.0
 offset_top = 1075.0
 offset_right = 515.0
 offset_bottom = 1275.0
+
+[connection signal="pressed" from="UI/TextureButton" to="UI" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="UI/QuestsButton" to="UI" method="_on_quests_button_pressed"]
+[connection signal="pressed" from="UI/StatsButton" to="UI" method="_on_stats_button_pressed"]
+[connection signal="pressed" from="UI/InitializeForm/OKButton" to="UI" method="_on_ok_button_pressed"]
+[connection signal="pressed" from="UI/InitializeForm/CancelButton" to="UI" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="UI/QuestsForm/CancelButton" to="UI" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="UI/StatsForm/CancelButton" to="UI" method="_on_cancel_button_pressed"]
