@@ -69,6 +69,21 @@ func control_bmi_label() -> void:
 		$BMILabel.visible = false
 		$BMILabel.text = str(bmi)
 
+func _on_select_button_1_pressed() -> void:
+	var text = $QuestsForm/Selections/SelectButton1/Calories.text
+	GameManager.character_data["calories_burned"] += int(text.substr(0, 3))
+	print(GameManager.character_data["calories_burned"])
+
+func _on_select_button_2_pressed() -> void:
+	var text = $QuestsForm/Selections/SelectButton2/Calories.text
+	GameManager.character_data["calories_burned"] += int(text.substr(0, 3))
+	print(GameManager.character_data["calories_burned"])
+
+func _on_select_button_3_pressed() -> void:
+	var text = $QuestsForm/Selections/SelectButton3/Calories.text
+	GameManager.character_data["calories_burned"] += int(text.substr(0, 3))
+	print(GameManager.character_data["calories_burned"])
+
 func pass_initial_data() -> void:
 	bmi = snapped($InitializeForm/Weight.value / pow($InitializeForm/Height.value / 100, 2), 0.1)
 	var sanitized_name = $InitializeForm/Name.text.replace("'", "\\'").replace("\"", "\\\"")
@@ -108,8 +123,8 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		for i in count:
 			button_title[i].text = titles[i]
 			button_description[i].text = descriptions[i]
-			button_duration[i].text = durations[i]
-			button_calories[i].text = calories[i]
+			button_duration[i].text = "%s minutes" % durations[i]
+			button_calories[i].text = "%s cal" % calories[i]
 		$QuestsForm/Selections.visible = true
 
 # DO NOT TOUCH DO NOT TOUCH DO NOT TOUCH
@@ -135,7 +150,7 @@ func get_current_datetime_wib() -> Dictionary:
 	var time_wib = time_utc + 25200 # 7 hours in seconds
 	return Time.get_datetime_dict_from_unix_time(time_wib)
 
-
+# LEGACY CODE
 # LEGACY CODE
 #func pass_initial_data() -> void:
 	#bmi = snapped($InitializeForm/Weight.value / pow($InitializeForm/Height.value / 100, 2), 0.1)

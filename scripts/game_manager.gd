@@ -11,7 +11,7 @@ func update_character(new_height: float, new_weight: float, new_calories: float,
 	character_data['age'] = new_age
 	character_data['bmi'] = new_bmi
 	character_data['name'] = new_name
-	character_data['calories_burned'] = 10
+	character_data['calories_burned'] = 0
 	short_char_data['bmi'] = new_bmi
 	short_char_data['height'] = new_height
 	short_char_data['weight'] = new_weight
