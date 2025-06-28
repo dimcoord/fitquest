@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0ia3363175x4"]
+[gd_scene load_steps=11 format=3 uid="uid://d0ia3363175x4"]
 
 [ext_resource type="Shader" uid="uid://44fs3dkw2im1" path="res://shaders/background.gdshader" id="1_0f027"]
 [ext_resource type="Script" uid="uid://bagovr5hu3mpg" path="res://scripts/sky_color_by_time.gd" id="1_2c62f"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c4r02uhal83bd" path="res://assets/fonts/PressStart2P-Regular.ttf" id="6_18nlu"]
 [ext_resource type="Texture2D" uid="uid://mkdwpc8ws7bc" path="res://assets/plus_button.png" id="6_hq1ik"]
 [ext_resource type="Texture2D" uid="uid://can0r4acpx3d" path="res://assets/ok_button.png" id="7_c16ls"]
+[ext_resource type="Script" uid="uid://5v3ijjhy2cum" path="res://scripts/loading_spinner.gd" id="9_c1pb6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2c62f"]
 shader = ExtResource("1_0f027")
@@ -424,6 +425,25 @@ text = "Quests"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ErrorLabel" type="Label" parent="UI/QuestsForm"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 516.0
+offset_right = 198.0
+offset_bottom = 585.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 50
+text = "Quests"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CancelButton" type="TextureButton" parent="UI/QuestsForm"]
 layout_mode = 1
 anchors_preset = 7
@@ -442,6 +462,331 @@ pivot_offset = Vector2(75, 78)
 texture_normal = ExtResource("6_hq1ik")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="LoadingSpinner" type="Control" parent="UI/QuestsForm"]
+anchors_preset = 0
+offset_left = 178.5
+offset_top = 432.0
+offset_right = 218.5
+offset_bottom = 472.0
+script = ExtResource("9_c1pb6")
+
+[node name="ColorRect" type="ColorRect" parent="UI/QuestsForm/LoadingSpinner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(140, 140)
+
+[node name="Selections" type="Control" parent="UI/QuestsForm"]
+visible = false
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 208.0
+offset_right = 629.0
+offset_bottom = 939.0
+
+[node name="SelectButton1" type="Button" parent="UI/QuestsForm/Selections"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -353.5
+offset_right = 299.5
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 8
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Title" type="Label" parent="UI/QuestsForm/Selections/SelectButton1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.5
+offset_top = -1.0
+offset_right = 60.5
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI/QuestsForm/Selections/SelectButton1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.5
+offset_top = -58.5
+offset_right = 265.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "Walk briskly for 10 mins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Duration" type="Label" parent="UI/QuestsForm/Selections/SelectButton1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = 58.5
+offset_right = 5.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "10 minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Calories" type="Label" parent="UI/QuestsForm/Selections/SelectButton1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.5
+offset_top = 59.5
+offset_right = 296.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "100 cal"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="SelectButton2" type="Button" parent="UI/QuestsForm/Selections"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -108.5
+offset_right = 299.5
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 8
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Title" type="Label" parent="UI/QuestsForm/Selections/SelectButton2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.5
+offset_top = -1.0
+offset_right = 60.5
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI/QuestsForm/Selections/SelectButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.5
+offset_top = -58.5
+offset_right = 265.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "Walk briskly for 10 mins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Duration" type="Label" parent="UI/QuestsForm/Selections/SelectButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = 58.5
+offset_right = 5.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "10 minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Calories" type="Label" parent="UI/QuestsForm/Selections/SelectButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.5
+offset_top = 59.5
+offset_right = 296.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "100 cal"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="SelectButton3" type="Button" parent="UI/QuestsForm/Selections"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = 137.5
+offset_right = 299.5
+offset_bottom = 352.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 8
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Title" type="Label" parent="UI/QuestsForm/Selections/SelectButton3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.5
+offset_top = -1.0
+offset_right = 60.5
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 40
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI/QuestsForm/Selections/SelectButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.5
+offset_top = -58.5
+offset_right = 265.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "Walk briskly for 10 mins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Duration" type="Label" parent="UI/QuestsForm/Selections/SelectButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = 58.5
+offset_right = 5.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "10 minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Calories" type="Label" parent="UI/QuestsForm/Selections/SelectButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.5
+offset_top = 59.5
+offset_right = 296.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_18nlu")
+theme_override_font_sizes/font_size = 30
+text = "100 cal"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="StatsForm" type="ColorRect" parent="UI"]
 visible = false
@@ -645,6 +990,8 @@ texture_normal = ExtResource("6_hq1ik")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="HTTPRequest" type="HTTPRequest" parent="UI"]
+
 [node name="Crates" type="ColorRect" parent="."]
 visible = false
 offset_left = 215.0
@@ -659,3 +1006,4 @@ offset_bottom = 1275.0
 [connection signal="pressed" from="UI/InitializeForm/CancelButton" to="UI" method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="UI/QuestsForm/CancelButton" to="UI" method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="UI/StatsForm/CancelButton" to="UI" method="_on_cancel_button_pressed"]
+[connection signal="request_completed" from="UI/HTTPRequest" to="UI" method="_on_http_request_request_completed"]
